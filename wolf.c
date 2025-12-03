@@ -33,7 +33,7 @@ int wolfDressingStep(Wolf *wolf, const char clothes[MAXClothes][MAX_LINE_LENGTH]
 		printf("J'arrive !!!\n");
 		return 1;
 	} else {
-		printf("Je mets mon %s !\n", clothes[currentCloth]);
+		printf("Je mets %s !\n", clothes[currentCloth]);
 		if (currentCloth == 0 && wolf->active == 0) {
 			wolf->x = rand() % FOREST_WIDTH;
 			wolf->y = rand() % FOREST_HEIGHT;
