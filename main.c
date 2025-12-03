@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "wolf.h"
 #include "child.h"
+#include "forest.h"
 
 /*
  * TODO : structure de données pour la carte enregistré sur le disque (PC) et sur la mémoire (du programme)
@@ -20,6 +21,7 @@ int main() {
 	const int clothesCount = readLines("../ressources/vetements.txt", clothes);
 
 	Wolf wolf = {-1, -1, 0};
+	Forest forest;
 	Child child;
 
 	GameStep step = STEP_COMPTINE;

@@ -7,4 +7,6 @@ add_executable(wolf main.c
         wolf.c
         wolf.h
         child.c
-        child.h)
+        child.h
+        forest.h
+        forest.c)

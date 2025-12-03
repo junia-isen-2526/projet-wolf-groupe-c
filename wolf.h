@@ -8,8 +8,7 @@
 #define MAXLines 50
 #define MAX_LINE_LENGTH 50
 #define MAXClothes 50
-#define FOREST_WIDTH 80
-#define FOREST_HEIGHT 40
+
 
 typedef enum {
   STEP_COMPTINE,
