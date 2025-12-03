@@ -4,10 +4,9 @@
 #include "child.h"
 
 /*
- * TODO :
- * -structure de données pour la carte enregistré sur le disque (PC) et sur la mémoire (du programme)
- * -creer la structure Child
- * -Regarder le comportement du loup et l'adapter.
+ * TODO : structure de données pour la carte enregistré sur le disque (PC) et sur la mémoire (du programme)
+ * TODO : creer la structure Child
+ * TODO : Regarder le comportement du loup et l'adapter.
  *
 */
 
