@@ -6,7 +6,7 @@
 /*
  * TODO :
  * -structure de données pour la carte enregistré sur le disque (PC) et sur la mémoire (du programme)
- *
+ * -creer la structure Child
  *
 */
 
