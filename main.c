@@ -3,6 +3,13 @@
 #include "wolf.h"
 #include "child.h"
 
+/*
+ * TODO :
+ * -structure de données pour la carte enregistré sur le disque (PC) et sur la mémoire (du programme)
+ *
+ *
+*/
+
 int main() {
 	srand(time(NULL));
 
