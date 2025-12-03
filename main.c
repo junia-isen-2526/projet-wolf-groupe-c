@@ -6,7 +6,7 @@
 /*
  * TODO :
  * -structure de données pour la carte enregistré sur le disque (PC) et sur la mémoire (du programme)
- * - Regarder le comportement du loup et l'adapter
+ * - Regarder le comportement du loup et l'adapter.
  *
 */
 
