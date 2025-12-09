@@ -12,9 +12,6 @@ typedef struct {
   unsigned char x;
   unsigned char y;
   unsigned char isSafe;
-
-
-  // TODO
 } Child;
 
 typedef unsigned char Map[FOREST_HEIGHT][FOREST_WIDTH];

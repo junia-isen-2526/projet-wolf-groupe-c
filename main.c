@@ -5,10 +5,18 @@
 #include "forest.h"
 
 /*
+ *globaux
  * TODO : structure de données pour la carte enregistré sur le disque (PC) et sur la mémoire (du programme)
- * TODO : creer la structure Child
  * TODO : Regarder le comportement du loup et l'adapter.
  *
+ *à faire là
+ * TODO : faire une fonction qui permet de générer un fichier en .mmd (mermaid) à partir de la structure de données Map (dans child.h)
+ * TODO : faire une fonction qui permet de générer un fichier en .txt (texte) à partir de la structure de données Map (dans child.h)
+ * TODO : faire les fonctions de Map pour faire en sorte de pouvoir ajouter des points à la Map
+ * TODO : faire les fonctions qui permettent de déplacer l'enfant
+ *
+ *à faire plus tard
+ * TODO : faire une fonction qui permet aux enfants de retrouver un chemin vers le bord en fonction de leur Map (avec l'aide du Mermaid ?)
 */
 
 int main() {
