@@ -7,22 +7,22 @@
 
 
 #include "forest.h"
-typedef struct {
+typedef struct Vertex{
     int id;
     Coords* coord;
 } Vertex;
 
-typedef struct {
+typedef struct Edge{
     Vertex* from;
     Vertex* to;
 } Edge;
 
-typedef struct {
+typedef struct Node{
     Edge* edge;
-    Node* nextNode;
+    struct Node* nextNode;
 } Node;
 
-typedef struct {
+typedef struct Graph{
     Node* firstNode;
     int nodeCount;
 } Graph;
