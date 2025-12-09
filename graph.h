@@ -9,12 +9,12 @@
 #include "forest.h"
 typedef struct {
     int id;
-    Coords coord;
+    Coords* coord;
 } Vertex;
 
 typedef struct {
-    Vertex from;
-    Vertex to;
+    Vertex* from;
+    Vertex* to;
 } Edge;
 
 typedef struct {
