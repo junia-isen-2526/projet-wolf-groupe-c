@@ -17,6 +17,8 @@ typedef struct Coords {
     //il faut se souvenir que le tableau va marcher en Forest[HAUTEUR][LONGUEUR] donc la position sera child(y,x) et non child(x,y)
 } Coords;
 
+Coords createCoords(unsigned char x, unsigned char y);
+
 void import_forest(Forest forest);
 
 //TODO : ça serait bien d'avoir une fonction dans Forest qui permetterait de connaitre les bords de la foret (débattable)
