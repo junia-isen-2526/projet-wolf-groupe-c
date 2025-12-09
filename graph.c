@@ -15,7 +15,7 @@ int exportGraphToMermaid(const Graph* g, const char* filename) {
         return -1;
     }
 
-    fprintf(file, "graph Child\n");
+    fprintf(file, "graph TD\n");
 
     Node* current = g->firstNode;
     while (current != NULL) {

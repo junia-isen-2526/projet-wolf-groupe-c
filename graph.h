@@ -27,6 +27,9 @@ typedef struct Graph{
     int nodeCount;
 } Graph;
 
+int exportGraphToMermaid(const Graph* g, const char* filename);
+
+
 int getNextId();
 
 

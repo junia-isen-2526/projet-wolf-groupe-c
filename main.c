@@ -3,6 +3,7 @@
 #include "wolf.h"
 #include "child.h"
 #include "forest.h"
+#include "graph.h"
 
 /*
  *globaux
@@ -27,6 +28,48 @@ int main() {
 
 	char clothes[MAXClothes][MAX_LINE_LENGTH];
 	const int clothesCount = readLines("../ressources/vetements.txt", clothes);
+
+
+	// Création des sommets
+	Vertex v1 = {1, &(Coords){0,0}};
+	Vertex v2 = {2, &(Coords){1,0}};
+	Vertex v3 = {3, &(Coords){1,1}};
+
+	// Création des arêtes
+	Edge* e1 = malloc(sizeof(Edge));
+	e1->from = &v1;
+	e1->to = &v2;
+
+	Edge* e2 = malloc(sizeof(Edge));
+	e2->from = &v2;
+	e2->to = &v3;
+
+	// Création des nœuds de la liste chaînée
+	Node* n1 = malloc(sizeof(Node));
+	n1->edge = e1;
+
+	Node* n2 = malloc(sizeof(Node));
+	n2->edge = e2;
+
+	// Chaînage manuel
+	n1->nextNode = n2;
+	n2->nextNode = NULL;
+
+	// Création du graphe
+	Graph g;
+	g.firstNode = n1;
+	g.nodeCount = 2;
+
+	// Export en Mermaid
+	if (exportGraphToMermaid(&g, "../mmd/graph.mmd") == 0) {
+		printf("Fichier Mermaid généré : graph.mmd\n");
+	}
+
+	// Libération mémoire
+	free(e1);
+	free(e2);
+	free(n1);
+	free(n2);
 
 	Wolf wolf = {-1, -1, 0};
 	Forest forest;
