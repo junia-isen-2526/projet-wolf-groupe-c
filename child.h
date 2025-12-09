@@ -6,6 +6,8 @@
 #ifndef WOLF__CHILD_H_
 #define WOLF__CHILD_H_
 
+#include "forest.h"
+
 typedef struct {
   unsigned char x;
   unsigned char y;

@@ -8,7 +8,7 @@
 #define MAXLines 50
 #define MAX_LINE_LENGTH 50
 #define MAXClothes 50
-
+#include "forest.h"
 
 typedef enum {
   STEP_COMPTINE,
