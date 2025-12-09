@@ -11,7 +11,7 @@
  *
  *à faire là
  * TODO : faire une fonction qui permet de générer un fichier en .mmd (mermaid) à partir de la structure de données Map (dans child.h)
- * TODO : faire une fonction qui permet de générer un fichier en .txt (texte) à partir de la structure de données Map (dans child.h)
+ * TODO : faire une fonction qui permet de générer un fichier en .txt (texte) à partir de la structure de données Map (dans child.h) parce que pour que la partie se finisse et que les enfants gagnent il faut que tout les chemins soient découvert, donc la manière de faire cela envisagé ici c'est qu'on sait si on a trouvé tout les chemins si quand on additionne la Map avec la Foret on n'a que des 1 et aucun vide
  * TODO : faire les fonctions de Map pour faire en sorte de pouvoir ajouter des points à la Map
  * TODO : faire les fonctions qui permettent de déplacer l'enfant
  *
