@@ -4,7 +4,7 @@ mes chaussures
 mon manteau
 mon chapeau
 mes gants
-mon écharpe
+mon echarpe
 mon pull
 mes chaussettes
 ma cravate
@@ -12,8 +12,8 @@ ma veste
 mes lunettes
 ma cape
 ma ceinture
-ma botte gauche
-ma botte droite
+mon t-shirt
+mes sous vetements
 mon dentier
 mon sonotone
 mes boucles d'oreilles
