@@ -1,36 +1,44 @@
-//
-// Created by Thanh on 09/12/2025.
-//
-
 #ifndef WOLF_GRAPH_H
 #define WOLF_GRAPH_H
 
+#include "coords.h"
 
-#include "forest.h"
-typedef struct Vertex{
+typedef struct Vertex {
     int id;
-    Coords* coord;
+    Coords coords;
+    struct Vertex *next; // Pour liste chaînée de sommets
 } Vertex;
 
-typedef struct Edge{
-    Vertex* from;
-    Vertex* to;
+typedef struct Edge {
+    Vertex *from;
+    Vertex *to;
 } Edge;
 
-typedef struct Node{
-    Edge* edge;
-    struct Node* nextNode;
-} Node;
+typedef struct GraphNode {
+    Edge *edge;
+    struct GraphNode *nextNode;
+} GraphNode;
 
-typedef struct Graph{
-    Node* firstNode;
+typedef struct {
+    GraphNode *firstEdge;
+    Vertex *firstVertex; // Liste des sommets
     int nodeCount;
+    int edgeCount;
 } Graph;
 
-int exportGraphToMermaid(const Graph* g, const char* filename);
+/* Créer un nouveau graphe vide */
+Graph* createGraph(void);
 
+/* Ajouter une arête (déplacement enfant) */
+int addEdge(Graph *graph, Coords from, Coords to);
 
-int getNextId();
+/* Exporter le graphe en format Mermaid */
+int exportGraphToMermaid(const Graph *graph, const char *filename);
 
+/* Libérer la mémoire du graphe */
+void freeGraph(Graph *graph);
 
-#endif //WOLF_GRAPH_H
+/* Afficher les stats du graphe (debug) */
+void printGraphStats(const Graph *graph);
+
+#endif // WOLF_GRAPH_H
