@@ -1,58 +1,96 @@
-#include <time.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include "wolf.h"
-#include "child.h"
-#include "forest.h"
-#include "graph.h"
+#include <time.h>
+#include <string.h>
+#include "game.h"
 
-/*
- *globaux
- * TODO : structure de données pour la carte enregistré sur le disque (PC) et sur la mémoire (du programme)
- * TODO : Regarder le comportement du loup et l'adapter.
- *
- *à faire là
- * TODO : faire la structure Graph et edges
- * TODO : faire une fonction qui permet de save un graph en .mmd (mermaid)
- * TODO : faire une fonction qui permet de charger un graph depuis un .mmd (mermaid)
- *à faire plus tard
- * TODO : faire les fonctions de Map pour faire en sorte de pouvoir ajouter des points à la Map
- * TODO : faire les fonctions qui permettent de déplacer l'enfant
- * TODO : faire une fonction qui permet aux enfants de retrouver un chemin vers le bord en fonction de leur Map (avec l'aide du Mermaid ?)
-*/
+int main(void) {
+    printf("\n╔════════════════════════════════════════════════════╗\n");
+    printf("║  🌲 Promenons-nous dans les bois 🐺               ║\n");
+    printf("║     Simulation de cartographie avec Mermaid        ║\n");
+    printf("╚════════════════════════════════════════════════════╝\n");
 
-int main() {
-	srand(time(NULL));
+    // Initialisation
+    srand((unsigned)time(NULL));
 
-	char rhyme[MAXLines][MAX_LINE_LENGTH];
-	const int rhymeCount = readLines("../ressources/comptine.txt", rhyme);
+    // Charger la comptine (essayer plusieurs chemins)
+    char rhyme[MAX_LINES][MAX_LINE_LENGTH];
+    int rhymeCount = readLines("../cmake-build-debug/ressources/comptine.txt", rhyme);
+    if (rhymeCount <= 0) {
+        rhymeCount = readLines("comptine.txt", rhyme);
+    }
+    if (rhymeCount <= 0) {
+        printf("❌ Erreur: Impossible de charger la comptine\n");
+        printf("   Chemins testés: ../cmake-build-debug/ressources/comptine.txt, comptine.txt\n");
+        return -1;
+    }
+    printf("✅ Comptine chargée (%d lignes)\n", rhymeCount);
 
-	char clothes[MAXClothes][MAX_LINE_LENGTH];
-	const int clothesCount = readLines("../ressources/vetements.txt", clothes);
+    // Charger les vêtements
+    char clothes[MAX_CLOTHES][MAX_LINE_LENGTH];
+    int clothesCount = readLines("../cmake-build-debug/ressources/vetements.txt", clothes);
+    if (clothesCount <= 0) {
+        clothesCount = readLines("vetements.txt", clothes);
+    }
+    if (clothesCount <= 0) {
+        printf("❌ Erreur: Impossible de charger les vêtements\n");
+        printf("   Chemins testés: ../cmake-build-debug/ressources/vetements.txt, vetements.txt\n");
+        return -1;
+    }
+    printf("✅ Vêtements chargés (%d items)\n", clothesCount);
 
+    // Initialiser le jeu (essayer plusieurs chemins pour la forêt)
+    Game *game = initGame("../cmake-build-debug/ressources/foret1.txt",
+                          "../cmake-build-debug/ressources/comptine.txt",
+                          "../cmake-build-debug/ressources/vetements.txt");
+    if (!game) {
+        // Essayer sans le dossier ressources/
+        game = initGame("foret1.txt", "comptine.txt", "vetements.txt");
+    }
+    if (!game) {
+        printf("❌ Erreur: Impossible d'initialiser le jeu\n");
+        printf("   Chemins testés: ../ressources/foret1.txt, foret1.txt\n");
+        return -1;
+    }
+    printf("✅ Jeu initialisé\n");
+    printf("📍 Position initiale enfant: (%d, %d)\n",
+           game->child.coords.x, game->child.coords.y);
 
-	Wolf wolf = {-1, -1, 0};
-	Forest forest;
-	Child child;
-	initChild(&child,0,0);
+    // Lancer la partie
+    printf("\n📍 Début de la simulation...\n");
+    int result = runGame(game, rhyme, rhymeCount, clothes, clothesCount);
 
-	GameStep step = STEP_COMPTINE;
+    // Afficher les statistiques finales
+    printGameState(game);
 
-	while (!isGameOver(step, child, &wolf)) {
-		switch (step) {
-			case STEP_COMPTINE: if (playComptineStep(rhyme, rhymeCount)) step = STEP_DRESSING;
-				break;
-			case STEP_DRESSING:
-				if (wolfDressingStep(&wolf, clothes, clothesCount)) {
-					step = STEP_WOLF_MOVE;
-				} else {
-					step = STEP_COMPTINE;
-				}
-				break;
-			case STEP_WOLF_MOVE: moveWolfStep(&wolf);
-				break;
-		}
-		moveChildStep(&child,forest);
-	}
+    // Exporter le graphe Mermaid
+    printf("\n📊 Génération du graphe Mermaid...\n");
+    if (exportGraphToMermaid(game->graph, "../cmake-build-debug/output/cartographie.mmd") == 0) {
+        printf("✅ Fichier Mermaid généré: ../cmake-build-debug/output/cartographie.mmd\n");
+    } else {
+        printf("❌ Erreur lors de la génération du Mermaid\n");
+    }
 
-	return 0;
+    // AJOUT: Exporter la carte de trajet
+    printf("\n🗺️  Génération de la carte de trajet...\n");
+    if (exportPathMap(game->pathMap, "../cmake-build-debug/output/trajet.txt") == 0) {
+        printf("✅ Carte de trajet générée: ../cmake-build-debug/output/trajet.txt\n");
+    } else {
+        printf("❌ Erreur lors de la génération de la carte\n");
+    }
+
+    printGraphStats(game->graph);
+
+    // Nettoyage
+    freeGame(game);
+
+    printf("\n╔════════════════════════════════════════════════════╗\n");
+    if (result == 0) {
+        printf("║  🎉 PARTIE RÉUSSIE !                              ║\n");
+    } else {
+        printf("║  💀 PARTIE PERDUE                                 ║\n");
+    }
+    printf("╚════════════════════════════════════════════════════╝\n\n");
+
+    return result;
 }
