@@ -1,31 +1,31 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "wolf.h"
+
+#ifndef WOLF_CHILD_H
+#define WOLF_CHILD_H
+
+#include "coords.h"
 #include "forest.h"
-
-#ifndef WOLF__CHILD_H_
-#define WOLF__CHILD_H_
-
+#include "graph.h"
 
 typedef struct {
-  Coords coords;
-  unsigned char isSafe;
-  unsigned char isDead;
+    Coords coords;
+    Coords startCoords;
+    unsigned char isSafe;
+    unsigned char isDead;
 } Child;
 
-typedef unsigned char Map[FOREST_HEIGHT][FOREST_WIDTH];
+/* Initialiser l'enfant */
+void initChild(Child *child, Coords startPos);
 
+/* Vérifier si l'enfant est safe */
+void updateSafeStatus(Child *child);
 
-void isSafe (Child child);
+/* Déplacer l'enfant */
+int moveChildStep(Child *child, const Forest forest, Graph *g);
 
-void AddVisitedPosition(Child child, Map *map);
+/* Vérifier si l'enfant est mangé par le loup */
+int isChildEaten(const Child *child, int wolfX, int wolfY);
 
-int isGameOver(GameStep step, Child child, const Wolf *wolf);
+/* Trouver une position aléatoire valide sur bord de la forêt */
+Coords findRandomEdgePosition(const Forest forest);
 
-void moveChildStep(Child *child, const Forest forest);
-
-void initChild(Child *child, unsigned char start_y, unsigned char start_x);
-
-#endif //WOLF__CHILD_H_
+#endif // WOLF_CHILD_H
