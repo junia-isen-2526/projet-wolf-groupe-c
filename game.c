@@ -86,7 +86,7 @@ GameState updateGame(Game *game,
     }
 
     // Étape 3 : Vérif fin
-    if (childResult == 1 || game->child.isSafe) {
+    if ((childResult == 1 || game->child.isSafe) && game->wolf.active) {
         printf("\n VICTOIRE ! L'enfant est en sécurité !\n");
         return GAME_CHILD_SAFE;
     }
