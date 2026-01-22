@@ -128,7 +128,7 @@ Coords findRandomEdgePosition(const Forest forest) {
     if (count > 0) {
         int index = rand() % count;
         result = createCoords(validPositions[index][0], validPositions[index][1]);
-        printf("[INIT] %d positions valides trouvées sur les bords\n", count);
+        printf("[INIT] %d positions valides trouvees sur les bords\n", count);
         printf("[INIT] Position choisie: (%d, %d)\n", result.x, result.y);
     } else {
         // Si aucune position valide sur les bords (cas improbable)

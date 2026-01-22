@@ -12,7 +12,7 @@ int loadForest(Forest forest, const char *filename) {
     for (int y = 0; y < FOREST_HEIGHT; y++) {
         char buffer[FOREST_WIDTH + 10]; // Buffer avec marge
         if (fgets(buffer, sizeof(buffer), file) == NULL) {
-            printf("Attention: forêt incomplète (ligne %d manquante)\n", y);
+            printf("Attention: foret incomplete (ligne %d manquante)\n", y);
             // Remplir le reste avec des espaces
             for (int x = 0; x < FOREST_WIDTH; x++) {
                 forest[y][x] = 0;

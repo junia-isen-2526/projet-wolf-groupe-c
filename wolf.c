@@ -30,7 +30,7 @@ int playComptineStep(char rhyme[MAX_LINES][MAX_LINE_LENGTH], int rhymeCount) {
 int wolfDressingStep(Wolf *wolf, const char clothes[MAX_CLOTHES][MAX_LINE_LENGTH], const int clothesCount) {
 	static int currentCloth = 0;
 	if ((currentCloth >= clothesCount) || ((currentCloth > 1) && (rand() % clothesCount == 0))) {
-		printf("J'arrive !!!\n");
+		printf("J\'arrive !!!\n");
 		return 1;
 	} else {
 		printf("Je mets %s !\n", clothes[currentCloth]);
@@ -50,6 +50,6 @@ void moveWolfStep(Wolf *wolf) {
 		int dy = (rand() % 3) - 1;
 		wolf->x += dx;
 		wolf->y += dy;
-		printf("Le loup se déplace en (%d, %d)\n", wolf->x, wolf->y);
+		printf("Le loup se deplace en (%d, %d)\n", wolf->x, wolf->y);
 	}
 }

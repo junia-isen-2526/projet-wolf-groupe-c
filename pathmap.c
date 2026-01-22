@@ -27,6 +27,6 @@ int exportPathMap(const PathMap map, const char *filename) {
     }
 
     fclose(file);
-    printf("Carte de trajet exportée vers %s\n", filename);
+    printf(" Carte de trajet exportee vers %s\n", filename);
     return 0;
 }

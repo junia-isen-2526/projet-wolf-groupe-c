@@ -87,12 +87,12 @@ GameState updateGame(Game *game,
 
     // Étape 3 : Vérif fin
     if ((childResult == 1 || game->child.isSafe) && game->wolf.active) {
-        printf("\n VICTOIRE ! L'enfant est en sécurité !\n");
+        printf("\n VICTOIRE ! L\'enfant est en securite !\n");
         return GAME_CHILD_SAFE;
     }
 
     if (isChildEaten(&game->child, game->wolf.x, game->wolf.y)) {
-        printf("\n DÉFAITE ! L'enfant a été mangé !\n");
+        printf("\n DEFAITE ! L\'enfant a ete mange !\n");
         return GAME_CHILD_EATEN;
     }
 
@@ -116,13 +116,13 @@ int runGame(Game *game,
 
 void printGameState(const Game *game) {
     if (!game) return;
-    printf("\n=== ÉTAT DU JEU ===\n");
+    printf("\n=== ETAT DU JEU ===\n");
     printf("Enfant: (%d, %d) [Safe: %d]\n",
            game->child.coords.x, game->child.coords.y, game->child.isSafe);
     printf("Loup: (%d, %d) [Actif: %d]\n",
            game->wolf.x, game->wolf.y, game->wolf.active);
-    printf("Étapes: %d\n", game->stepCount);
-    printf("Arêtes cartographiées: %d\n", game->graph->edgeCount);
+    printf("Etapes: %d\n", game->stepCount);
+    printf("Aretes cartographiees: %d\n", game->graph->edgeCount);
     printf("===================\n\n");
 }
 

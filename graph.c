@@ -108,7 +108,7 @@ int exportGraphToMermaid(const Graph *graph, const char *filename) {
     }
 
     fclose(file);
-    printf("✅ Graphe exporté vers %s\n", filename);
+    printf("[V] Graphe exportee vers %s\n", filename);
     return 0;
 }
 
@@ -141,6 +141,6 @@ void printGraphStats(const Graph *g) {
     if (!g) return;
     printf("\n=== STATISTIQUES GRAPHE ===\n");
     printf("Nombre de sommets: %d\n", g->nodeCount);
-    printf("Nombre d'arêtes: %d\n", g->edgeCount);
+    printf("Nombre d\'aretes: %d\n", g->edgeCount);
     printf("============================\n\n");
 }
