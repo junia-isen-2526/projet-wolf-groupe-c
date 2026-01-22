@@ -12,4 +12,7 @@ add_executable(wolf main.c
         forest.c
         graph.h
         graph.c
+        game.c
+        coords.c
+        pathmap.c
 )

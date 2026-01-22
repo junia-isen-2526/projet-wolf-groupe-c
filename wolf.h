@@ -5,9 +5,9 @@
 #ifndef WOLF__WOLF_H_
 #define WOLF__WOLF_H_
 
-#define MAXLines 50
+#define MAX_LINES 50
 #define MAX_LINE_LENGTH 50
-#define MAXClothes 50
+#define MAX_CLOTHES 50
 #include "forest.h"
 
 typedef enum {
@@ -22,11 +22,11 @@ typedef struct {
   int active;
 } Wolf;
 
-int readLines(const char *filename, char lines[MAXLines][MAX_LINE_LENGTH]);
+int readLines(const char *filename, char lines[MAX_LINES][MAX_LINE_LENGTH]);
 
-int playComptineStep(char rhyme[MAXLines][MAX_LINE_LENGTH], int rhymeCount);
+int playComptineStep(char rhyme[MAX_LINES][MAX_LINE_LENGTH], int rhymeCount);
 
-int wolfDressingStep(Wolf *wolf, const char clothes[MAXClothes][MAX_LINE_LENGTH], int clothesCount);
+int wolfDressingStep(Wolf *wolf, const char clothes[MAX_CLOTHES][MAX_LINE_LENGTH], int clothesCount);
 
 void moveWolfStep(Wolf *wolf);
 

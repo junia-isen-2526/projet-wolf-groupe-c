@@ -23,7 +23,6 @@ Game* initGame(const char *forestFile,
     game->wolf.x = -1;
     game->wolf.y = -1;
     game->wolf.active = 0;
-    game->wolf.clothCount = 0;
 
     // Créer graphe
     game->graph = createGraph();
@@ -42,8 +41,6 @@ Game* initGame(const char *forestFile,
     game->state = GAME_RUNNING;
     game->stepCount = 0;
 
-    // Réinitialiser les variables loup
-    resetGameStep();
 
     return game;
 }

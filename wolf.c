@@ -1,13 +1,13 @@
 #include "wolf.h"
 
-int readLines(const char *filename, char lines[MAXLines][MAX_LINE_LENGTH]) {
+int readLines(const char *filename, char lines[MAX_LINES][MAX_LINE_LENGTH]) {
 	FILE *file = fopen(filename, "r");
 	if (!file) {
 		perror("Erreur ouverture fichier");
 		return 0;
 	}
 	int count = 0;
-	while (fgets(lines[count], MAX_LINE_LENGTH, file) && count < MAXLines) {
+	while (fgets(lines[count], MAX_LINE_LENGTH, file) && count < MAX_LINES) {
 		lines[count][strcspn(lines[count], "\n")] = '\0';
 		count++;
 	}
@@ -15,7 +15,7 @@ int readLines(const char *filename, char lines[MAXLines][MAX_LINE_LENGTH]) {
 	return count;
 }
 
-int playComptineStep(char rhyme[MAXLines][MAX_LINE_LENGTH], int rhymeCount) {
+int playComptineStep(char rhyme[MAX_LINES][MAX_LINE_LENGTH], int rhymeCount) {
 	static int currentLine = 0;
 	if (currentLine < rhymeCount) {
 		printf("%s\n", rhyme[currentLine]);
@@ -27,7 +27,7 @@ int playComptineStep(char rhyme[MAXLines][MAX_LINE_LENGTH], int rhymeCount) {
 	}
 }
 
-int wolfDressingStep(Wolf *wolf, const char clothes[MAXClothes][MAX_LINE_LENGTH], const int clothesCount) {
+int wolfDressingStep(Wolf *wolf, const char clothes[MAX_CLOTHES][MAX_LINE_LENGTH], const int clothesCount) {
 	static int currentCloth = 0;
 	if ((currentCloth >= clothesCount) || ((currentCloth > 1) && (rand() % clothesCount == 0))) {
 		printf("J'arrive !!!\n");
